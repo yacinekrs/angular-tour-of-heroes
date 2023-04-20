@@ -1,0 +1,12 @@
+<h2>Select Hero</h2>
+  <form>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Heroes</mat-label>
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Heroes" required>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
