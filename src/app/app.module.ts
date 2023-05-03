@@ -13,6 +13,12 @@ import { MatFormFieldModule} from'@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import { FormRadioComponent } from './form-radio/form-radio.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +26,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeroDetailComponent,
     MessagesComponent,
     HeroSelectComponent,
-    DashboardComponent
+    DashboardComponent,
+    FormRadioComponent,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +39,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule,
+    MatRadioModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }

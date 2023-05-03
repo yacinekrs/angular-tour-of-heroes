@@ -19,13 +19,20 @@ export class HeroDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    this.getHero();//<-- on l'appele dans ngOnInit comme ca des le debut on aura les heros dans hero
   }
 
-  getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));  // <-- j'ai pas compris elle fait pour recupe l'id, elle a une relation avec app-routing.module.ts
+  getHero(): void {//<-- elle est appelée dans le ngOnInit
+    const id = Number(this.route.snapshot.paramMap.get('id'));  // <-- elle reconnait l'id avec le path qu'on a designé dans app-routing.moduls.ts
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .subscribe(h => this.hero = h);//<-- il va recevoir le hero qui convient a l'id et ensuite on peut utiliser cet hero dans le html
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
   }
 
   goBack(): void {

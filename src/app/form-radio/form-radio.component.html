@@ -1,0 +1,23 @@
+<form [formGroup]="questionnaireForm">
+  <mat-radio-group formControlName="menopauseCtrl" [required]="heroe.Gender !== 'I'" >
+    <mat-radio-button value='oui'>Oui</mat-radio-button>
+    <mat-radio-button value='non'>Non</mat-radio-button>
+  </mat-radio-group>
+  <mat-error *ngIf="menopauseCtrl.invalid && isSubmited">
+    Veuillez sélectionner une réponse
+  </mat-error>
+  <br>
+  <br>
+  <mat-radio-group formControlName="menopauseCtrl2" [required]="heroe.Gender !== 'I'" >
+    <mat-radio-button value='oui'>Oui</mat-radio-button>
+    <mat-radio-button value='non'>Non</mat-radio-button>
+  </mat-radio-group>
+  <mat-error *ngIf="menopauseCtrl.invalid && isSubmited"  >
+    Veuillez sélectionner une réponse2
+  </mat-error>
+
+  <button (click)="envoyer()" color="accent" [disabled]="!questionnaireForm.valid" >
+    Envoyer</button>
+</form>
+
+

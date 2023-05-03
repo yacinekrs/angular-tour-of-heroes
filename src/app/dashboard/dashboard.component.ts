@@ -13,11 +13,11 @@ export class DashboardComponent implements OnInit {
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getHeroes(); //<-- c'est une fonction de ce composant qui appele le service du meme nom
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
+    this.heroService.getHeroes()// <-- c'est le service
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
 }
